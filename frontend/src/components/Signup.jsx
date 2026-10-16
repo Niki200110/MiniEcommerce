@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { toast } from "react-toastify";
+import api from "../axios";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("/signup", formData);
+      const res = await api.post("/signup", formData);
 
       console.log("signup", res.data);
       setToken(null);
