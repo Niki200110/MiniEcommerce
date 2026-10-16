@@ -28,7 +28,7 @@ export default function ProductDetails() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios
+    api
       .get(`/products/${id}`)
       .then((res) => {
         console.log("Produt Detail:", res.data);
