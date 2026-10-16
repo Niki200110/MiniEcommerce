@@ -28,7 +28,11 @@ mongoose
 //     console.log(`app is listing on port ${port}🚀`)
 // })
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+  }),
+);
 app.use(express.json());
 // passport
 app.use(passport.initialize());
