@@ -29,7 +29,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/products/${id}`)
+      .get(`/products/${id}`)
       .then((res) => {
         console.log("Produt Detail:", res.data);
         setProduct(res.data);
@@ -50,7 +50,7 @@ export default function ProductDetails() {
 
     try {
       setDeleting(true);
-      await api.delete(`http://localhost:3000/products/${id}`);
+      await api.delete(`/products/${id}`);
 
       toast.success("Product deleted successfully!");
       navigate("/");

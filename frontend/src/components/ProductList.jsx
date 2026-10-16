@@ -12,7 +12,7 @@ export default function ProductList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/products")
+      .get("/products")
       .then((res) => setProducts(res.data))
       .catch((err) => {
         console.log(err);

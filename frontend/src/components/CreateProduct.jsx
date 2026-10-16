@@ -58,7 +58,7 @@ export default function CreateProduct() {
         data.append("image", file);
       });
 
-      await api.post("http://localhost:3000/products", data, {
+      await api.post("/products", data, {
         onUploadProgress: (event) => {
           if (event.total) {
             const percent = Math.round((event.loaded / event.total) * 100);

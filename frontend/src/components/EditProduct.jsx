@@ -23,7 +23,7 @@ export default function EditProduct() {
   // Existing product data fetch
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/products/${id}`)
+      .get(`/products/${id}`)
       .then((res) => {
         setFormData({
           name: res.data.name,
@@ -83,7 +83,7 @@ export default function EditProduct() {
         data.append("image", file);
       });
 
-      await api.put(`http://localhost:3000/products/${id}`, data, {
+      await api.put(`/products/${id}`, data, {
         onUploadProgress: (event) => {
           if (event.total) {
             const percent = Math.round((event.loaded / event.total) * 100);
