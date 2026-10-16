@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import axios from "axios";
 import HomePage from "./HomePage";
+import api from "../axios";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ export default function ProductList() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios
+    api
       .get("/products")
       .then((res) => setProducts(res.data))
       .catch((err) => {

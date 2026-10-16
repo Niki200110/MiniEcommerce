@@ -22,7 +22,7 @@ export default function EditProduct() {
 
   // Existing product data fetch
   useEffect(() => {
-    axios
+    api
       .get(`/products/${id}`)
       .then((res) => {
         setFormData({
