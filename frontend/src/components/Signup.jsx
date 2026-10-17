@@ -37,7 +37,7 @@ export default function Signup() {
       });
 
       toast.success("Account created successfully! Please login.");
-      navigate("/login");
+      navigate("/login",{ replace: true });
     } catch (err) {
       alert(err.response?.data?.message || "Signup failed");
     }

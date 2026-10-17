@@ -98,7 +98,7 @@ export default function EditProduct() {
 
       toast.success("Product updated successfully!");
       setTimeout(() => {
-        navigate(`/product/${id}`);
+        navigate(`/product/${id}`,{ replace: true });
       }, 1500);
     } catch (err) {
       setStatus("error");

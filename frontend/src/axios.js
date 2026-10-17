@@ -6,10 +6,11 @@ const api = axios.create({
 });
 
 // Har protected request mein token attach hoga.
+// Request interceptor server ko request bhejne se PEHLE kaam karta hai.
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");    //leraha 
 
-  if (token) {
+  if (token) {                                    //laga rha
     config.headers.Authorization = `Bearer ${token}`;
   }
 
@@ -17,6 +18,7 @@ api.interceptors.request.use((config) => {
 });
 
 // Common friendly error messages.
+// Response interceptor server se response aane ke BAAD kaam karta hai.
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -26,9 +28,11 @@ api.interceptors.response.use(
     // Login/signup ke errors unke components handle karenge.
     const isAuthPage = url.includes("/login") || url.includes("/signup");
 
+    // Internet ya connection error
     if (!error.response) {
       toast.error("Unable to connect. Please try again.");
-    } else if (status === 401 && !isAuthPage) {
+    } //401 — Authentication problem necha hai
+    else if (status === 401 && !isAuthPage) {
       localStorage.removeItem("token");
 
       toast.info("Session expired. Please login again.");
@@ -36,11 +40,12 @@ api.interceptors.response.use(
       setTimeout(() => {
         window.location.reload();
       }, 1000);
-    } else if (status === 403) {
+    } //403 — Permission nahi hai
+    else if (status === 403) {
       toast.error("You can only edit or delete your own products.");
     }
 
-    return Promise.reject(error); //Ye original error ko reject karta hai, taaki jis component ne API call ki hai, woh bhi error handle kar sake.
+    return Promise.reject(error); //Ye original error ko reject karta hai, taaki jis component ne API call ki hai, woh bhi error handle kar sake.(Error ko error ki tarah aage bhejo)
   },
 );
 

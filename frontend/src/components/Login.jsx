@@ -36,7 +36,7 @@ export default function Login() {
       });
 
       toast.success("Login successful! Welcome back.");
-      navigate("/");
+      navigate("/",{ replace: true });
     } catch (err) {
       toast.error("Invalid username or password.");
       // alert(err.response?.data?.message || "Login failed");

@@ -72,7 +72,7 @@ export default function CreateProduct() {
       // alert("Product added successfully!");
       // navigate("/");
       setTimeout(() => {
-        navigate("/");
+        navigate("/",{ replace: true });
       }, 1500);
 
       setFormData({

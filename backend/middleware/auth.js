@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 
+// token nikalna request se jab aya
 function authenticateToken(req, res, next) {
   const authHeader = req.headers.authorization;
 
