@@ -1,7 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
 });
@@ -30,7 +29,13 @@ api.interceptors.response.use(
     if (!error.response) {
       toast.error("Unable to connect. Please try again.");
     } else if (status === 401 && !isAuthPage) {
-      toast.info("Please login to continue.");
+      localStorage.removeItem("token");
+
+      toast.info("Session expired. Please login again.");
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } else if (status === 403) {
       toast.error("You can only edit or delete your own products.");
     }
